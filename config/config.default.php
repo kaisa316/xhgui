@@ -30,7 +30,12 @@ return array(
     // Profile 1 in 100 requests.
     // You can return true to profile every request.
     'profiler.enable' => function() {
-        return rand(1, 100) === 42;
+        //return rand(1, 100) === 42;//system default
+		$url = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
+		if (strpos($url, 'local') || strpos($url, 'ci-study') !== false) {
+			return true;
+		}
+		return rand(1, 100) === 42;
     },
 
     'profiler.simple_url' => function($url) {
