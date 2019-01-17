@@ -2,3 +2,5 @@
 /tags
 /vendor
 config/config.php
+*.swp
+.gitignore
